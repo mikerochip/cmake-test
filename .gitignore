@@ -19,3 +19,4 @@ cmake-build*
 
 # CMake
 /build*/
+CMakeUserPresets.json

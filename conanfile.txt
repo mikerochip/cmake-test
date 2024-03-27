@@ -1,7 +1,14 @@
 [requires]
-poco/1.12.4
-fmt/9.1.0
-cli11/2.2.0
+poco/1.13.2
+fmt/10.2.1
+cli11/2.4.1
+
+[tool_requires]
+cmake/3.28.1
 
 [generators]
-cmake
+CMakeDeps
+CMakeToolchain
+
+[layout]
+cmake_layout

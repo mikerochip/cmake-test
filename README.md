@@ -81,9 +81,9 @@ Managing Python installations is a massive pain. We're going to do it right (i.e
 
 ## Conan
 
-Install Conan
+Install Conan 2
 
-1. ```pip install conan==1.58.0 --force-reinstall```
+1. ```pip install conan==2.2.2 --force-reinstall```
 2. ```pyenv rehash```
 
 ## PowerShell

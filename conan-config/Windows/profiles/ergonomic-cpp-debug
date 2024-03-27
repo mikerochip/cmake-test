@@ -6,9 +6,3 @@ arch_build=x86_64
 build_type=Debug
 compiler=Visual Studio
 compiler.version=16
-
-[options]
-
-[build_requires]
-
-[env]
