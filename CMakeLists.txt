@@ -1,4 +1,9 @@
 cmake_minimum_required(VERSION 3.13)
+
+# Mac as of Sonoma macOS 14.3.1 is causing CMake to faile to compile a simple test program.
+# This works around it. See https://stackoverflow.com/a/53635241/720021
+set(CMAKE_TRY_COMPILE_TARGET_TYPE "STATIC_LIBRARY")
+
 project(ErgonomicCpp)
 
 set(CMAKE_CXX_STANDARD 14)
