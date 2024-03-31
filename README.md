@@ -122,28 +122,32 @@ First ```cd src/BuildSystem``` then run any of these:
 1. Open CLion
 1. Install the plugin for [Conan](https://plugins.jetbrains.com/plugin/11956-conan)
 1. Preferences/Settings > Build, Execution, and Deployment
-   1. Conan
-      1. Install args: ```--build=missing```
-      1. [Windows] Conan executable: ```C:/Users/<yourusername>/.pyenv/pyenv-win/shims/conan.bat```
-         * *There seems to be a CLion bug where it can't find ```conan``` in the path even if it's there.*
    1. CMake
       1. You should see a default configuration called ```Debug```, select it and change these options
          * Build directory: ```build/Debug```
-         * [Mac] Generator: ```Unix Makefiles```
-         * [Windows] Generator: ```Visual Studio 16 2019```
-      1. Now click the plus icon to add a new configuration, which should default to ```Release```
+         * Mac
+           * Generator: ```Unix Makefiles```
+           * CMake Options: ```-G "Unix Makefiles" -DCMAKE_PROJECT_TOP_LEVEL_INCLUDES="conan_provider.cmake"```
+         * Windows
+           * Generator: ```Visual Studio 16 2019```
+           * CMake Options: ```-G "Visual Studio 16 2019" -DCMAKE_PROJECT_TOP_LEVEL_INCLUDES="conan_provider.cmake"```
+      1. Click the plus icon to add a new configuration, which should default to ```Release```
          * Build directory: ```build/Release```
-         * [Mac] Generator: ```Unix Makefiles```
-         * [Windows] Generator: ```Visual Studio 16 2019```
+         * Mac
+            * Generator: ```Unix Makefiles```
+            * CMake Options: ```-G "Unix Makefiles" -DCMAKE_PROJECT_TOP_LEVEL_INCLUDES="conan_provider.cmake"```
+         * Windows
+            * Generator: ```Visual Studio 16 2019```
+            * CMake Options: ```-G "Visual Studio 16 2019" -DCMAKE_PROJECT_TOP_LEVEL_INCLUDES="conan_provider.cmake"```
 1. Open the Conan window
-   1. Click the Match profile button
-      1. Set ```Debug``` to ```ergonomic-cpp-debug```
-      1. Set ```Release``` to ```ergonomic-cpp-release```
-   1. Click the Reload button
+   1. Click the gear button `Configure Conan`
+      * Check `Use Conan installed in the system`
+      * Check `Automatically add Conan for all configurations`
+      * Check `Debug` and `Release` for `Use Conan for the following configurations`
+      * Check `Let Conan manage the Advanced Settings > Reload CMake profiles sequentially option`
+   1. Click the Reload button `Update packages and dependency provider`
 1. Open the CMake window
    1. Click the Reload button
-
-When using CLion, you'll have to hit the CMake and Conan reload buttons after pulling the project if dependencies change. Need to think about automating this! What a pain! It's like Unreal's ```GenerateProjectFiles```
 
 # Troubleshooting
 
