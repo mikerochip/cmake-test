@@ -128,11 +128,11 @@ First ```cd src/BuildSystem``` then run any of these:
          * *There seems to be a CLion bug where it can't find ```conan``` in the path even if it's there.*
    1. CMake
       1. You should see a default configuration called ```Debug```, select it and change these options
-         * Build directory: ```build/debug```
+         * Build directory: ```build/Debug```
          * [Mac] Generator: ```Unix Makefiles```
          * [Windows] Generator: ```Visual Studio 16 2019```
       1. Now click the plus icon to add a new configuration, which should default to ```Release```
-         * Build directory: ```build/release```
+         * Build directory: ```build/Release```
          * [Mac] Generator: ```Unix Makefiles```
          * [Windows] Generator: ```Visual Studio 16 2019```
 1. Open the Conan window
@@ -147,7 +147,7 @@ When using CLion, you'll have to hit the CMake and Conan reload buttons after pu
 
 # Troubleshooting
 
-**Error:** When running the build script ```CMake Error at build/debug/conanbuildinfo.cmake:1299 (message): Detected a mismatch for the compiler version between your conan profile settings and CMake```
+**Error:** When running the build script ```Detected a mismatch for the compiler version between your conan profile settings and CMake```
 
 **Suggestion:** Generally, your compiler changing (install, update, etc) will cause this error. This project relies on the CMake and Conan compiler defaults being the same.
 
@@ -160,7 +160,7 @@ Then re-run the build script.
 
 **Error:** ```ERROR: Invalid setting 'x.x' is not a valid 'settings.compiler.version' value.```
 
-**Suggestion:** If you're on Mac and you get this error then probably Conan itself hasn't been updated to support the latest compiler version from the XCode CLI tools, which presumably you just downloaded. The workaround for this, which admittedly sucks pretty bad, is to add the new version to your ```~/.conan/settings.yml``` manually in the ```apple-clang/version``` array.
+**Suggestion:** If you're on Mac and you get this error then probably Conan itself hasn't been updated to support the latest compiler version from the XCode CLI tools, which presumably you just downloaded. The workaround for this, which admittedly sucks pretty bad, is to add the new version to your ```~/.conan2/settings.yml``` manually in the ```apple-clang/version``` array.
 
 **Error:** [Windows] CLion syntax highlighting is broken (can't find standard library headers, incorrect warnings for Conan package includes, etc) and debugging doesn't work.
 
@@ -175,7 +175,7 @@ Then re-run the build script.
 **Suggestion:** Try this
 
 1. Wipe out your caches
-   * Conan cache: `~/.conan`
+   * Conan cache: `~/.conan2`
    * CMake cache: `<ProjectRoot>/build`
 1. Make sure your compilers are up to date, see instructions above
 1. Run the build script, see instructions above

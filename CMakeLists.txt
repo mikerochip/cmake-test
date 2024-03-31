@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.28.1)
+cmake_minimum_required(VERSION 3.27.8)
 
 # Mac as of Sonoma macOS 14.3.1 is causing CMake to faile to compile a simple test program.
 # This works around it. See https://stackoverflow.com/a/53635241/720021
@@ -8,9 +8,9 @@ project(ErgonomicCpp)
 
 set(CMAKE_CXX_STANDARD 17)
 
-find_package(CLI11 REQUIRED)
-find_package(fmt REQUIRED)
-find_package(Poco REQUIRED)
+find_package(CLI11 CONFIG REQUIRED)
+find_package(fmt CONFIG REQUIRED)
+find_package(Poco CONFIG REQUIRED)
 
 include_directories(
   src/Libraries

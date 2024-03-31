@@ -20,3 +20,6 @@ cmake-build*
 # CMake
 /build*/
 CMakeUserPresets.json
+
+# CLion Conan plugin
+conan_provider.cmake
