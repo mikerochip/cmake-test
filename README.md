@@ -23,7 +23,7 @@ With the following compilers / build systems
 ### Homebrew
 
 1. Go to https://brew.sh/
-1. Follow the install instructions
+2. Follow the installation instructions
 
 *NOTE: Homebrew will install Xcode CLI tools these days, but that's not a guarantee*
 
@@ -36,16 +36,16 @@ With the following compilers / build systems
 ### Visual Studio 2019 (MSVC 16)
 
 1. Download the Visual Studio 2019 Build Tools installer with [this link](https://aka.ms/vs/16/release/vs_BuildTools.exe)
-1. Run the installer
-1. Check the Desktop development with C++ workload
+2. Run the installer
+3. Check the Desktop development with C++ workload
    * This is a giant download, just to warn you (~5gb)
-1. Click Install
+4. Click Install
 
 ### Developer Command Prompt
 
 1. Open your Windows search box and type "Developer PowerShell"
-1. Right click the "Developer PowerShell for VS 2019" result
-1. Choose Pin to Taskbar
+2. Right-click the "Developer PowerShell for VS 2019" result
+3. Choose Pin to Taskbar
 
 ### ⚠ **Warning** ⚠
 
@@ -71,12 +71,12 @@ Managing Python installations is a massive pain. We're going to do it right (i.e
       * Make sure your OS is Catalina or higher
       * Follow the ```For Zsh``` instructions
    * Win: https://github.com/pyenv-win/pyenv-win#installation
-      * PowerShell is the easiest install option
-1. Now open a command prompt to install Python via pyenv
-1. ```pyenv install 3.9.6```
-1. ```pyenv global 3.9.6```
-1. ```python -m pip install pip --upgrade```
-1. This isn't stricly needed, but you might as well install Pipenv. If you ever plan on working on Python projects, you'll want to use Pipenv to version-lock Python and packages.
+      * PowerShell is the easiest installation option
+2. Now open a command prompt to install Python via pyenv
+3. ```pyenv install 3.9.6```
+4. ```pyenv global 3.9.6```
+5. ```python -m pip install pip --upgrade```
+6. This isn't strictly needed, but you might as well install Pipenv. If you ever plan on working on Python projects, you'll want to use Pipenv to version-lock Python and packages.
    * ```python -m pip install --user pipenv```
 
 ## Conan
@@ -116,12 +116,12 @@ First ```cd src/BuildSystem``` then run any of these:
 
 1. You'll need to run the build scripts in Debug and Release first
    1. Open a command prompt at the project root, then...
-   1. ```cd src/BuildSystem```
-   1. ```pwsh build.ps1 Debug```
-   1. ```pwsh build.ps1 Release```
-1. Open CLion
-1. Install the plugin for [Conan](https://plugins.jetbrains.com/plugin/11956-conan)
-1. Preferences/Settings > Build, Execution, and Deployment
+   2. ```cd src/BuildSystem```
+   3. ```pwsh build.ps1 Debug```
+   4. ```pwsh build.ps1 Release```
+2. Open CLion
+3. Install the plugin for [Conan](https://plugins.jetbrains.com/plugin/11956-conan)
+4. Preferences/Settings > Build, Execution, and Deployment
    1. CMake
       1. You should see a default configuration called ```Debug```, select it and change these options
          * Build directory: ```build/Debug```
@@ -131,7 +131,7 @@ First ```cd src/BuildSystem``` then run any of these:
          * Windows
            * Generator: ```Visual Studio 16 2019```
            * CMake Options: ```-G "Visual Studio 16 2019" -DCMAKE_PROJECT_TOP_LEVEL_INCLUDES="conan_provider.cmake"```
-      1. Click the plus icon to add a new configuration, which should default to ```Release```
+      2. Click the plus icon to add a new configuration, which should default to ```Release```
          * Build directory: ```build/Release```
          * Mac
             * Generator: ```Unix Makefiles```
@@ -139,21 +139,21 @@ First ```cd src/BuildSystem``` then run any of these:
          * Windows
             * Generator: ```Visual Studio 16 2019```
             * CMake Options: ```-G "Visual Studio 16 2019" -DCMAKE_PROJECT_TOP_LEVEL_INCLUDES="conan_provider.cmake"```
-1. Open the Conan window
+5. Open the Conan window
    1. Click the gear button `Configure Conan`
       * Check `Use Conan installed in the system`
       * Check `Automatically add Conan for all configurations`
       * Check `Debug` and `Release` for `Use Conan for the following configurations`
       * Check `Let Conan manage the Advanced Settings > Reload CMake profiles sequentially option`
-   1. Click the Reload button `Update packages and dependency provider`
-1. Open the CMake window
+   2. Click the Reload button `Update packages and dependency provider`
+6. Open the CMake window
    1. Click the Reload button
 
 # Troubleshooting
 
 **Error:** When running the build script ```Detected a mismatch for the compiler version between your conan profile settings and CMake```
 
-**Suggestion:** Generally, your compiler changing (install, update, etc) will cause this error. This project relies on the CMake and Conan compiler defaults being the same.
+**Suggestion:** Generally, your compiler changing (install, update, etc.) will cause this error. This project relies on the CMake and Conan compiler defaults being the same.
 
 Try this:
 
@@ -164,15 +164,15 @@ Then re-run the build script.
 
 **Error:** ```ERROR: Invalid setting 'x.x' is not a valid 'settings.compiler.version' value.```
 
-**Suggestion:** If you're on Mac and you get this error then probably Conan itself hasn't been updated to support the latest compiler version from the XCode CLI tools, which presumably you just downloaded. The workaround for this, which admittedly sucks pretty bad, is to add the new version to your ```~/.conan2/settings.yml``` manually in the ```apple-clang/version``` array.
+**Suggestion:** If you're on Mac and you get this error then probably Conan itself has not been updated to support the latest compiler version from the XCode CLI tools, which presumably you just downloaded. The workaround for this, which admittedly sucks pretty bad, is to add the new version to your ```~/.conan2/settings.yml``` manually in the ```apple-clang/version``` array.
 
-**Error:** [Windows] CLion syntax highlighting is broken (can't find standard library headers, incorrect warnings for Conan package includes, etc) and debugging doesn't work.
+**Error:** [Windows] CLion syntax highlighting is broken (can't find standard library headers, incorrect warnings for Conan package includes, etc.) and debugging doesn't work.
 
 **Suggestion:** Most likely your default toolchain is set to MinGW, which seems to be straight up broke on Windows. Setting it to Visual Studio should fix this.
 
 1. File > Settings > Build, Execution, and Deployment > Toolchains
-1. Click Visual Studio
-1. Click the up arrow button until Visual Studio becomes the first, default item
+2. Click Visual Studio
+3. Click the up arrow button until Visual Studio becomes the first, default item
 
 **Error:** Compile error from a package dependency
 
@@ -181,8 +181,8 @@ Then re-run the build script.
 1. Wipe out your caches
    * Conan cache: `~/.conan2`
    * CMake cache: `<ProjectRoot>/build`
-1. Make sure your compilers are up to date, see instructions above
-1. Run the build script, see instructions above
+2. Make sure your compilers are up-to-date, see instructions above
+3. Run the build script, see instructions above
 
 **Error:** CLion Conan plugin is missing
 
