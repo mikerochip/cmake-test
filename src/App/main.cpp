@@ -48,11 +48,12 @@ void BuildCommandParser(CLI::App& app)
     int count = 0;
     app.add_option("-c,--count", count, "Counter");
 
-    int v = 0;
-    app.add_flag("--flag", v, "Some flag that can be passed multiple times");
-
-    double value = 0.0;  // = 3.14;
+    double value = 0.0;
     app.add_option("-d,--double", value, "Some Value");
+
+    // NOTE: Passing an int as the flag value causes memory corruption in the CLI::App object.
+    bool flag = false;
+    app.add_flag("--flag", flag, "Some flag that can be passed multiple times");
 }
 
 string GeneratePocoMd5Hex()
